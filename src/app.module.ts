@@ -1,15 +1,15 @@
 import { Module } from '@nestjs/common';
-import { RootController } from './root/root.controller';
-import { RootService } from './root/root.service';
-import { PlayerController } from './player/presentation/player.controller';
-import { PlayerService } from './player/application/player.service';
-import { LocalPlayerRepository } from './player/infrastructure/local-player.repository';
+import { HelloController } from './features/hello/hello.controller';
+import { HelloService } from './features/hello/hello.service';
+import { PlayerController } from './features/player/presentation/player.controller';
+import { PlayerService } from './features/player/application/player.service';
+import { LocalPlayerRepository } from './infrastructure/local/local-player.repository';
 
 @Module({
   imports: [],
-  controllers: [RootController, PlayerController],
+  controllers: [HelloController, PlayerController],
   providers: [
-    RootService,
+    HelloService,
     PlayerService,
     {
       provide: 'PlayerRepository',
