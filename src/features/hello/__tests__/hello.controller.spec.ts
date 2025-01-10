@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { HelloController } from '../hello.controller';
 import { HelloService } from '../hello.service';
+import { Hello } from '../hello.entity';
 
 describe('HelloController', () => {
   let helloController: HelloController;
@@ -16,7 +17,7 @@ describe('HelloController', () => {
 
   describe('getHello', () => {
     it('should return "Hello World!"', () => {
-      expect(helloController.getHello()).toBe('Hello World!');
+      expect(helloController.getHello()).toEqual(new Hello('Hello World!'));
     });
   });
 });

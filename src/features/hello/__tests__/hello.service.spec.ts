@@ -1,3 +1,4 @@
+import { Hello } from '../hello.entity';
 import { HelloService } from '../hello.service';
 
 describe('HelloService', () => {
@@ -6,7 +7,7 @@ describe('HelloService', () => {
       const helloService = new HelloService();
       const result = helloService.getHello();
 
-      expect(result).toBe('Hello World!');
+      expect(result).toEqual(new Hello('Hello World!'));
     });
   });
 });
