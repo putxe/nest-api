@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Player } from 'src/features/player/domain/player.entity';
-import { PlayerRepository } from 'src/features/player/domain/player.repository';
+import { PlayerRepository } from '../../features/player/domain/player.repository';
+import { Player } from '../../features/player/domain/player.entity';
 
 @Injectable()
 export class LocalPlayerRepository implements PlayerRepository {

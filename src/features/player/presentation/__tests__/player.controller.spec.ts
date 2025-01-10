@@ -27,11 +27,29 @@ describe('PlayerController', () => {
 
   describe('getAll', () => {
     it('should return the value returned by player service', async () => {
-      mockPlayerService.getAll.mockReturnValueOnce([]);
+      const expected = [
+        {
+          name: 'Zinedine Zidane',
+          id: 1,
+          age: 38,
+        },
+        {
+          name: 'Ronaldinho',
+          id: 2,
+          age: 45,
+        },
+        {
+          name: 'Lionel Messi',
+          id: 3,
+          age: 37,
+        },
+      ];
+
+      mockPlayerService.getAll.mockReturnValueOnce(expected);
 
       const players = await playerController.getAll();
 
-      expect(players).toEqual([]);
+      expect(players).toEqual(expected);
       expect(mockPlayerService.getAll).toHaveBeenCalledTimes(1);
     });
   });
