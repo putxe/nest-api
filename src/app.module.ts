@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { HelloController } from './features/hello/hello.controller';
+import { HelloController } from './features/hello/presentation/hello.controller';
 import { HelloService } from './features/hello/hello.service';
 import { PlayerController } from './features/player/presentation/player.controller';
 import { LocalPlayerRepository } from './infrastructure/local/local-player.repository';
