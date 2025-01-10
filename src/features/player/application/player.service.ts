@@ -1,5 +1,8 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { PlayerRepository } from '../domain/player.repository';
+import {
+  PLAYER_REPOSITORY,
+  PlayerRepository,
+} from '../domain/player.repository';
 import { Player } from '../domain/player.entity';
 import { GetPlayersUseCase } from '../domain/get-players.use-case';
 
@@ -7,7 +10,7 @@ import { GetPlayersUseCase } from '../domain/get-players.use-case';
 export class PlayerService {
   private getPlayersUseCase: GetPlayersUseCase;
 
-  constructor(@Inject('PlayerRepository') playerRepository: PlayerRepository) {
+  constructor(@Inject(PLAYER_REPOSITORY) playerRepository: PlayerRepository) {
     this.getPlayersUseCase = new GetPlayersUseCase(playerRepository);
   }
 

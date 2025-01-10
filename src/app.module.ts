@@ -4,6 +4,7 @@ import { HelloService } from './features/hello/hello.service';
 import { PlayerController } from './features/player/presentation/player.controller';
 import { PlayerService } from './features/player/application/player.service';
 import { LocalPlayerRepository } from './infrastructure/local/local-player.repository';
+import { PLAYER_REPOSITORY } from './features/player/domain/player.repository';
 
 @Module({
   imports: [],
@@ -12,7 +13,7 @@ import { LocalPlayerRepository } from './infrastructure/local/local-player.repos
     HelloService,
     PlayerService,
     {
-      provide: 'PlayerRepository',
+      provide: PLAYER_REPOSITORY,
       useClass: LocalPlayerRepository,
     },
   ],
