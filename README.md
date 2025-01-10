@@ -41,10 +41,9 @@ $ pnpm run test:cov
 ## Clean architecture
 I've used principles of Clean Architecture and it fits pretty well with nest.js! 
 
-The main concept is to separate the business part (aka domain) from technical part (infrastructure and external dependencies). 
+The main concept is to separate the business part (on features folder) from technical part (on infrastructure folder). 
 
-For example for player context there is four layers: 
+For example for player context there is three layers: 
 - `presentation` which expose the data to the world and handle the requests
 - `domain` which is the core of the entities, use cases and the business rules
 - `application` which contains the services and can call multiples use cases from the domain 
-- `infrastructure` which is an external dependency (database for example)
