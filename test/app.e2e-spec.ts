@@ -19,6 +19,17 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Hello World!');
+      .expect({ message: 'Hello World!' });
+  });
+
+  it('/players (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/players')
+      .expect(200)
+      .expect([
+        { id: 1, name: 'Zinedine Zidane', age: 38 },
+        { id: 2, name: 'Ronaldinho', age: 45 },
+        { id: 3, name: 'Lionel Messi', age: 37 },
+      ]);
   });
 });
