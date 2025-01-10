@@ -46,4 +46,3 @@ The main concept is to separate the business part (on features folder) from tech
 For example for player context there is three layers: 
 - `presentation` which expose the data to the world and handle the requests
 - `domain` which is the core of the entities, use cases and the business rules
-- `application` which contains the services and can call multiples use cases from the domain 

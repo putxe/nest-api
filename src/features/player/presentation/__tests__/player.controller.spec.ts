@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PlayerController } from '../player.controller';
-import { PlayerService } from '../../application/player.service';
+import { PLAYER_REPOSITORY } from '../../domain/player.repository';
 
-const mockPlayerService = {
+const mockPlayerRepository = {
   getAll: jest.fn(),
 };
 
@@ -14,15 +14,15 @@ describe('PlayerController', () => {
       controllers: [PlayerController],
       providers: [
         {
-          provide: PlayerService,
-          useValue: mockPlayerService,
+          provide: PLAYER_REPOSITORY,
+          useValue: mockPlayerRepository,
         },
       ],
     }).compile();
 
     playerController = app.get<PlayerController>(PlayerController);
 
-    mockPlayerService.getAll.mockReset();
+    mockPlayerRepository.getAll.mockReset();
   });
 
   describe('getAll', () => {
@@ -45,12 +45,12 @@ describe('PlayerController', () => {
         },
       ];
 
-      mockPlayerService.getAll.mockReturnValueOnce(expected);
+      mockPlayerRepository.getAll.mockReturnValueOnce(expected);
 
       const players = await playerController.getAll();
 
       expect(players).toEqual(expected);
-      expect(mockPlayerService.getAll).toHaveBeenCalledTimes(1);
+      expect(mockPlayerRepository.getAll).toHaveBeenCalledTimes(1);
     });
   });
 });

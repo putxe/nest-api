@@ -1,13 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
-import { PlayerService } from '../application/player.service';
+import { Controller, Get, Inject } from '@nestjs/common';
 import { Player } from '../domain/player.entity';
+import { GetPlayersUseCase } from '../domain/get-players.use-case';
+import {
+  PLAYER_REPOSITORY,
+  PlayerRepository,
+} from '../domain/player.repository';
 
 @Controller('players')
 export class PlayerController {
-  constructor(private readonly playerService: PlayerService) {}
+  private getPlayersUseCase: GetPlayersUseCase;
+
+  constructor(@Inject(PLAYER_REPOSITORY) playerRepository: PlayerRepository) {
+    this.getPlayersUseCase = new GetPlayersUseCase(playerRepository);
+  }
 
   @Get()
-  async getAll(): Promise<Player[]> {
-    return this.playerService.getAll();
+  getAll(): Promise<Player[]> {
+    return this.getPlayersUseCase.execute();
   }
 }
